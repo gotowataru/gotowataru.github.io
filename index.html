@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>じゃんけんゲーム</title>
+    <title>じゃんけんで勝負じゃ</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -42,12 +42,12 @@
 
 <body>
     <span style="padding: 20px"></span>
-    <h1>じゃんけんゲーム</h1>
+    <h1>じゃんけんで勝負じゃ</h1>
     <div class="hands">
-        <span style="font-size : 12pt">computer</span>
+        <span style="font-size : 12pt">ワイ</span>
         <span id="computerHand">👊</span>
         <span style="padding: 15px"></span>
-        <span style="font-size : 12pt">you</span>
+        <span style="font-size : 12pt">お前</span>
         <span id="playerHand">👊</span>
         <span style="padding: 15px"></span>
     </div>
@@ -92,10 +92,10 @@
                 (playerChoice === 'チョキ' && computerChoice === 'パー') ||
                 (playerChoice === 'パー' && computerChoice === 'グー')
             ) {
-                result = 'あなたの勝ち！';
+                result = 'お前の勝ち！';
                 wins++;
             } else {
-                result = 'コンピュータの勝ち！';
+                result = 'ワイの勝ち！';
                 losses++;
             }
 
