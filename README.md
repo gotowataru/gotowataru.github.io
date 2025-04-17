@@ -1,0 +1,1 @@
+# gotowataru.github.io
