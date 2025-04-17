@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>じゃんけんゲーム</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+
+        .choice-btn {
+            font-size: 18px;
+            margin: 10px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .hands {
+            font-size: 80px;
+            margin: 20px 0;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .score {
+            margin: 30px;
+            padding: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+    <span style="padding: 20px"></span>
+    <h1>じゃんけんゲーム</h1>
+    <div class="hands">
+        <span style="font-size : 12pt">computer</span>
+        <span id="computerHand">👊</span>
+        <span style="padding: 15px"></span>
+        <span style="font-size : 12pt">you</span>
+        <span id="playerHand">👊</span>
+        <span style="padding: 15px"></span>
+    </div>
+
+    <div id="result">じゃんけん...</div>
+    <div class="score">
+        勝ち: <span id="wins">0</span>
+        負け: <span id="losses">0</span>
+        引き分け: <span id="draws">0</span>
+    </div>
+
+    <div>
+        <button class="choice-btn" onclick="play('グー')">グー 👊</button>
+        <button class="choice-btn" onclick="play('チョキ')">チョキ ✌️</button>
+        <button class="choice-btn" onclick="play('パー')">パー 🖐️</button>
+    </div>
+
+    <script>
+        let wins = 0;
+        let losses = 0;
+        let draws = 0;
+
+        const hands = {
+            'グー': '👊',
+            'チョキ': '✌️',
+            'パー': '🖐️'
+        };
+
+        function play(playerChoice) {
+            const choices = ['グー', 'チョキ', 'パー'];
+            const computerChoice = choices[Math.floor(Math.random() * choices.length)];
+
+            document.getElementById('playerHand').textContent = hands[playerChoice];
+            document.getElementById('computerHand').textContent = hands[computerChoice];
+
+            let result;
+            if (playerChoice === computerChoice) {
+                result = '引き分け！';
+                draws++;
+            } else if (
+                (playerChoice === 'グー' && computerChoice === 'チョキ') ||
+                (playerChoice === 'チョキ' && computerChoice === 'パー') ||
+                (playerChoice === 'パー' && computerChoice === 'グー')
+            ) {
+                result = 'あなたの勝ち！';
+                wins++;
+            } else {
+                result = 'コンピュータの勝ち！';
+                losses++;
+            }
+
+            document.getElementById('result').textContent = result;
+            updateScore();
+        }
+
+        function updateScore() {
+            document.getElementById('wins').textContent = wins;
+            document.getElementById('losses').textContent = losses;
+            document.getElementById('draws').textContent = draws;
+        }
+    </script>
+</body>
+
+</html>
+
